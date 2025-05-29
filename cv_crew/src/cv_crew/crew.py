@@ -34,14 +34,14 @@ class CvCrew():
     def cv_review_task(self) -> Task:
         return Task(
             config=self.tasks_config['cv_review_task'],
-            tools=[PDFSearchTool(pdf='C:/Users/dmmac/dev/projects/cv-cover-letter-tool/cv_crew/knowledge/Current_CV.pdf')],  # Tool to read files, e.g., CVs
+            tools=[PDFSearchTool(pdf='<path>/knowledge/Current_CV.pdf')],  # Tool to read files, e.g., CVs
         )
 
     @task
     def cover_letter_task(self) -> Task:
         return Task(
             config=self.tasks_config['cover_letter_task'],
-            tools=[PDFSearchTool(pdf='C:/Users/dmmac/dev/projects/cv-cover-letter-tool/cv_crew/knowledge/Current_CV.pdf')],  # Tool to read files, e.g., job descriptions
+            tools=[PDFSearchTool(pdf='<path>/knowledge/Current_CV.pdf')],  # Tool to read files, e.g., job descriptions
             output_file='output/cover_letter.md',
         )
 
