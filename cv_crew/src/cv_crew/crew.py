@@ -1,6 +1,6 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from crewai_tools import PDFSearchTool
+from crewai.project import after_kickoff
 
 # If you want to run a snippet of code before or after the crew starts, 
 # you can use the @before_kickoff and @after_kickoff decorators
@@ -8,13 +8,19 @@ from crewai_tools import PDFSearchTool
 
 @CrewBase
 class CvCrew():
-    """CvCrew crew"""
-
     # YAML configuration files
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
-
     # Agents
+    
+    @after_kickoff
+    def log_results(self, result):
+        # Log or modify the results
+        return dict(
+			cv_review_task=self.cv_review_task().output.raw,
+			cover_letter_task=self.cover_letter_task().output.raw,
+		)
+
     @agent
     def cv_reviewer(self) -> Agent:
         return Agent(
@@ -34,16 +40,17 @@ class CvCrew():
     def cv_review_task(self) -> Task:
         return Task(
             config=self.tasks_config['cv_review_task'],
-            tools=[PDFSearchTool(pdf='C:/Users/dmmac/dev/projects/cv-cover-letter-tool/cv_crew/knowledge/Current_CV.pdf')],  # Tool to read files, e.g., CVs
+            output_file='output/cv_review.md',
         )
+
 
     @task
     def cover_letter_task(self) -> Task:
         return Task(
             config=self.tasks_config['cover_letter_task'],
-            tools=[PDFSearchTool(pdf='C:/Users/dmmac/dev/projects/cv-cover-letter-tool/cv_crew/knowledge/Current_CV.pdf')],  # Tool to read files, e.g., job descriptions
             output_file='output/cover_letter.md',
         )
+
 
     @crew
     def crew(self) -> Crew:

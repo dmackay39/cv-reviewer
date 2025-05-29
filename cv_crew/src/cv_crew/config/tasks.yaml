@@ -1,13 +1,16 @@
 cv_review_task:
   description: >
-    Read the provided CV file using the PDF Search tool. Review the CV thoroughly and identify areas for improvement. Be specific and tailor it to the provided cv.
+    Review the following CV and identify areas for improvement:
+    {cv_text}
   expected_output: >
     A list of bullet points detailing specific ways the CV can be improved.
   agent: cv_reviewer
 
 cover_letter_task:
   description: >
-    Read the provided CV file using the PDF Search tool and review the following job description: {job_description}.
+    Read the provided CV
+    {cv_text}
+    and review the following job description: {job_description}.
     Write a tailored cover letter that demonstrates how the applicant's experience matches the job requirements.
   expected_output: >
     A cover letter formatted as markdown (without '```') that highlights how the applicant meets the job requirements using information from the CV.
