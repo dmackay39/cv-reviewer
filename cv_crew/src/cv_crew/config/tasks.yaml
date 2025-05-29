@@ -2,6 +2,7 @@ cv_review_task:
   description: >
     Review the following CV and identify areas for improvement. Be as specific as possible. And reference parts of the CV as evidence.
     {cv_text}
+    Also, consider the job description: {job_description}. Describe how the CV can be tailored to better fit the job requirements.
   expected_output: >
     A list of bullet points detailing specific ways the CV can be improved.
   agent: cv_reviewer
