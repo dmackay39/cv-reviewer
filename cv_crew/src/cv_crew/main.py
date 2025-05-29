@@ -18,8 +18,28 @@ def run():
     Run the crew.
     """
     inputs = {
-        'topic': 'AI LLMs',
-        'current_year': str(datetime.now().year)
+        'job_description': """Job Title: Software Engineer
+
+        We are seeking a talented and motivated Software Engineer to join our dynamic development team. The ideal candidate will have experience designing, developing, and maintaining scalable web applications.
+
+        Responsibilities:
+        - Design, develop, test, and deploy high-quality software solutions
+        - Collaborate with cross-functional teams to define, design, and ship new features
+        - Write clean, maintainable, and efficient code
+        - Participate in code reviews and contribute to team best practices
+        - Troubleshoot, debug, and upgrade existing systems
+
+        Requirements:
+        - Bachelors degree in Computer Science or related field, or equivalent experience
+        - Proficiency in Python, JavaScript, or similar programming languages
+        - Experience with web frameworks such as Django, Flask, or React
+        - Familiarity with version control systems (e.g., Git)
+        - Strong problem-solving skills and attention to detail
+        - Excellent communication and teamwork abilities
+
+        Preferred:
+        - Experience with cloud platforms (AWS, Azure, or GCP)
+        - Knowledge of CI/CD pipelines and DevOps practices""",
     }
     
     try:

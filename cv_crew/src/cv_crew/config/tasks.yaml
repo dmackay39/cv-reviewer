@@ -1,17 +1,14 @@
-research_task:
+cv_review_task:
   description: >
-    Conduct a thorough research about {topic}
-    Make sure you find any interesting and relevant information given
-    the current year is {current_year}.
+    Read the provided CV file using the PDF Search tool. Review the CV thoroughly and identify areas for improvement. Be specific and tailor it to the provided cv.
   expected_output: >
-    A list with 10 bullet points of the most relevant information about {topic}
-  agent: researcher
+    A list of bullet points detailing specific ways the CV can be improved.
+  agent: cv_reviewer
 
-reporting_task:
+cover_letter_task:
   description: >
-    Review the context you got and expand each topic into a full section for a report.
-    Make sure the report is detailed and contains any and all relevant information.
+    Read the provided CV file using the PDF Search tool and review the following job description: {job_description}.
+    Write a tailored cover letter that demonstrates how the applicant's experience matches the job requirements.
   expected_output: >
-    A fully fledged report with the main topics, each with a full section of information.
-    Formatted as markdown without '```'
-  agent: reporting_analyst
+    A cover letter formatted as markdown (without '```') that highlights how the applicant meets the job requirements using information from the CV.
+  agent: cover_letter_writer
